@@ -29,7 +29,6 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
       storeWeatherData("japan-weather-data.json", japanWeather, weatherData[0]);
       sleep.sleep(2);
     } catch (e) {
-      rejectedCities.push({ city, reason: e.response.data.message });
       console.log(`❌  Message: ${e.response.data.message}, city name: ${city}`);
       sleep.sleep(2);
     }
