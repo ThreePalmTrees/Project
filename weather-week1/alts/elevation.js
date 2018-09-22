@@ -4,22 +4,20 @@ const sleep = require("sleep");
 const fs = require("fs");
 
 let final = [];
-let top10Cities = cities.filter((city, i) => i < 10 && city);
-cities.map(async (city, i) => {
-  let result = [];
+cities.map(async (city) => {
   const { lat, lng } = city;
+  const cityName = city.name;
   const currentCityAPI = `https://elevation-api.io/api/elevation?points=(${lat},${lng})`;
   try {
     const response = await axios(currentCityAPI);
     const data = response.data;
     const alt = data.elevations[0].elevation;
-    result.push({ ...city, alt });
+    console.log(`${cityName} is ${alt}m above sea level`);
     storeAlt({ ...city, alt });
-    sleep.sleep(2);
   } catch (e) {
-    console.log(e);
+    console.log(`error with ${cityName}, ${e.message}`);
   }
-  // console.log(result);
+  sleep.sleep(2);
 });
 
 const storeAlt = val => {
