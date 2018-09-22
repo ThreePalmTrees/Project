@@ -9,8 +9,8 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
 
 (function main() {
 
-  // japanCities.map(async entity => {
-  fiveCityNames.map(async entity => {
+  japanCities.map(async entity => {
+//   fiveCityNames.map(async entity => {
     let japanWeather = [];
     const city = entity.city;
     const url = "https://api.openweathermap.org";
