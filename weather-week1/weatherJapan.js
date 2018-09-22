@@ -13,8 +13,8 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
   let errors = 0;
   let rejectedCities = [];
 
-  japanCities.map(async entity => {
-//   fiveCityNames.map(async entity => {
+  // japanCities.map(async entity => {
+  fiveCityNames.map(async entity => {
     const city = entity.city;
     const url = "https://api.openweathermap.org";
     const token = "600576fe99a5d3a29804568961f1a8ee";
@@ -34,18 +34,20 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
       success++;
       console.log(`✓ Success, city: ${city}`);
       console.log(`Total fulfilled: ${success}\n`);
-      sleep.sleep(2);
     } catch (e) {
       rejectedCities.push({ city, reason: e.response.data.message });
       errors++;
 
-      console.log(`❌  Message: ${e.response.data.message}, city name: ${city}`);
+      console.log(
+        `❌  Message: ${e.response.data.message}, city name: ${city}`
+      );
       console.log(`Total rejected: ${errors}\n`);
-      sleep.sleep(2);
     }
 
-    if (success + errors === japanCities.length) {
-//     if (success + errors === fiveCityNames.length) {
+    sleep.sleep(2);
+
+    // if (success + errors === japanCities.length) {
+    if (success + errors === fiveCityNames.length) {
       if (!errors) {
         console.log("Done");
         return;

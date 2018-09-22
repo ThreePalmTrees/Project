@@ -8,10 +8,10 @@ const japanCities = require("./japan-cities");
 let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample test
 
 (function main() {
-  let japanWeather = [];
 
   // japanCities.map(async entity => {
   fiveCityNames.map(async entity => {
+    let japanWeather = [];
     const city = entity.city;
     const url = "https://api.openweathermap.org";
     const token = "600576fe99a5d3a29804568961f1a8ee";
@@ -27,11 +27,12 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
 
       console.log(`Temprature now in ${city} is ${temp}`);
       storeWeatherData("japan-weather-data.json", japanWeather, weatherData[0]);
-      sleep.sleep(2);
     } catch (e) {
       console.log(`❌  Message: ${e.response.data.message}, city name: ${city}`);
-      sleep.sleep(2);
     }
+
+    sleep.sleep(2);
+
   });
 })();
 
