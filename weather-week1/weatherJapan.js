@@ -13,8 +13,8 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
   let errors = 0;
   let rejectedCities = [];
 
-  // japanCities.map(async entity => {
-  fiveCityNames.map(async entity => {
+  japanCities.map(async entity => {
+//   fiveCityNames.map(async entity => {
     const city = entity.city;
     const url = "https://api.openweathermap.org";
     const token = "600576fe99a5d3a29804568961f1a8ee";
@@ -44,8 +44,8 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
       sleep.sleep(2);
     }
 
-    // if (success + errors === japanCities.length) {
-    if (success + errors === fiveCityNames.length) {
+    if (success + errors === japanCities.length) {
+//     if (success + errors === fiveCityNames.length) {
       if (!errors) {
         console.log("Done");
         return;
