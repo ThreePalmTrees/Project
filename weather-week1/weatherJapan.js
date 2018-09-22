@@ -38,9 +38,7 @@ let fiveCityNames = japanCities.filter((obj, i) => i < 5 && obj.city); // sample
       rejectedCities.push({ city, reason: e.response.data.message });
       errors++;
 
-      console.log(
-        `❌  Message: ${e.response.data.message}, city name: ${city}`
-      );
+      console.log(`❌  Message: ${e.response.data.message}, city name: ${city}`);
       console.log(`Total rejected: ${errors}\n`);
     }
 
